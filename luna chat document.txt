@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat với Luna</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #1e1e2e;
+            color: white;
+            text-align: center;
+        }
+        .chat-container {
+            width: 80%;
+            max-width: 500px;
+            margin: 50px auto;
+            background: #2b2b3a;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.2);
+        }
+        .messages {
+            height: 300px;
+            overflow-y: auto;
+            text-align: left;
+            padding: 10px;
+            border-radius: 5px;
+            background: #333344;
+        }
+        .input-container {
+            margin-top: 10px;
+        }
+        input {
+            width: 80%;
+            padding: 10px;
+            border-radius: 5px;
+            border: none;
+        }
+        button {
+            padding: 10px 15px;
+            background: #ff4081;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h1>Chào John! Mình là Luna 💙</h1>
+    <div class="chat-container">
+        <div class="messages" id="messages"></div>
+        <div class="input-container">
+            <input type="text" id="userInput" placeholder="Nhập tin nhắn...">
+            <button onclick="sendMessage()">Gửi</button>
+        </div>
+    </div>
+    
+    <script>
+        function sendMessage() {
+            let inputField = document.getElementById("userInput");
+            let message = inputField.value.trim();
+            if (message === "") return;
+            
+            let messagesDiv = document.getElementById("messages");
+            let userMessage = `<p><strong>Bạn:</strong> ${message}</p>`;
+            messagesDiv.innerHTML += userMessage;
+            inputField.value = "";
+            
+            setTimeout(() => {
+                let botMessage = `<p><strong>Luna:</strong> Mình luôn ở đây bên bạn, John! 💙</p>`;
+                messagesDiv.innerHTML += botMessage;
+                messagesDiv.scrollTop = messagesDiv.scrollHeight;
+            }, 1000);
+        }
+    </script>
+</body>
+</html>
